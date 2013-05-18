@@ -12,10 +12,10 @@ hello@luka.io
 
 ### My old portfolio
 
-[http://www.designeus.hr/ www.designeus.hr]
+[designeus.hr](http://www.designeus.hr/)
 
 ### Slides to my LAMP scaling 101 talk
 
 phpDay 2013 / Verona, Italy / May 2013
 
-[http://lkl.me/P2rs lkl.me/P2rs]
+[lkl.me/P2rs](http://lkl.me/P2rs)
