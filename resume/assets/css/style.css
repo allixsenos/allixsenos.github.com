@@ -1,0 +1,272 @@
+/* 
+=====================================
+  
+  davortomic.com/RESUME
+  Author: Davor Tomic, Designeus
+  Last updated: 9 Apr 2013
+
+  -----------------------------------
+
+  SVG Patterns from:
+  http://philbit.com/svgpatterns/
+
+  Icon Fonts from:
+  http://fontello.com
+
+===================================== 
+  
+  Table of contents:
+  01 Defaults
+  02 Typography
+    - Families
+    - Headings
+    - Links
+    - Paragraphs, Lists, others
+  03 Forms and Buttons
+    - Gradients
+  04 Basic Layout
+  05 Header
+    - Navigation
+    - 
+  06 Content
+    - 
+  07 Footer
+  ...
+  10 Media Queries
+    - 480 and up
+    - 600 and up
+    - 
+  
+===================================== 
+*/
+
+
+/* ======================================================================
+01 :: DEFAULTS ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+@import "reset.css";
+
+/* Tricks to make coding easier */
+* { background-repeat:no-repeat; -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box }
+
+/* Transitions */
+a, input { -moz-transition:background 0.2s ease-out; -webkit-transition:background 0.2s ease-out; -o-transition:background 0.2s ease-out; transition:background 0.2s ease-out }
+
+.btn { -moz-transition: none; -webkit-transition: none; -o-transition: none; transition: none }
+
+
+/* ======================================================================
+02 :: TYPOGRAPHY ::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+
+/* 02a - Families */
+body { color: #333; font: 300 100%/1.5 'Lato', "helvetica neue", helvetica, arial, sans-serif; text-rendering:optimizeLegibility; }
+
+/* 02b - Headings */
+h1, h2, h3, h4 { font-weight: 400; line-height: 1.1; margin: 0 0 0.25em; text-transform: uppercase; }
+h1 { font-size:2.11538em; }
+h2 { font-size:1.61538em; margin-bottom: 0.7em }
+h3 { font-size:1.5em; text-transform: none }
+h4 { font-size: 1.05em; font-weight:300; margin-bottom: 0.3em; text-transform: uppercase; }
+
+/* 02c - Links */
+a { border-bottom: 1px dotted #F06900; color: #000; display: inline-block; font-weight: 400; margin:0 0 0.1em; padding: 0.1em 0 0; text-decoration: none; white-space: nowrap; }
+a:hover { 
+  background: #f06900; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f06900 0%, #ea3a00 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f06900), color-stop(100%,#ea3a00)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f06900 0%,#ea3a00 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f06900 0%,#ea3a00 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f06900 0%,#ea3a00 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f06900 0%,#ea3a00 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f06900', endColorstr='#ea3a00',GradientType=0 ); /* IE6-9 */
+  border-bottom:1px solid transparent; border-radius: 0.25em; color: #fff; margin:0 -0.2em; padding:0.1em 0.2em; 
+  }
+
+/* 02d - Paragraphs, Lists, others */
+p { font-size: 1.225em; margin: 0 0 1.5em; }
+section a { margin:0; padding:0; }
+section a:hover { margin:-0.1em -0.2em; }
+strong { font-weight: 400 }
+
+/* 02e - Forms */
+
+/* 02f - Aside */
+
+
+
+/* ======================================================================
+03 :: FORMS & BUTTONS :::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+
+/* 03a - Gradients */
+.lightgrey {
+  background: #f9f9f9; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f9f9f9 30%, #eaeaea 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(30%,#f9f9f9), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f9f9f9 30%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f9f9f9 30%,#eaeaea 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f9f9f9 30%,#eaeaea 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f9f9f9 30%,#eaeaea 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9f9f9', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+  box-shadow: inset 0 1px 0 #fff;
+  }
+
+.lightgrey:hover { 
+  background: #F06900; box-shadow: none
+  }
+
+/* ======================================================================
+04 :: BASIC LAYOUT ::::::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+
+html { background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iNiIgaGVpZ2h0PSI2Ij4KPHJlY3Qgd2lkdGg9IjYiIGhlaWdodD0iNiIgZmlsbD0iI2VlZWVlZSI+PC9yZWN0Pgo8ZyBpZD0iYyI+CjxyZWN0IHdpZHRoPSIzIiBoZWlnaHQ9IjMiIGZpbGw9IiNlNmU2ZTYiPjwvcmVjdD4KPHJlY3QgeT0iMSIgd2lkdGg9IjMiIGhlaWdodD0iMiIgZmlsbD0iI2Q4ZDhkOCI+PC9yZWN0Pgo8L2c+Cjx1c2UgeGxpbms6aHJlZj0iI2MiIHg9IjMiIHk9IjMiPjwvdXNlPgo8L3N2Zz4="); min-height: 100%; position: relative }
+body { margin:0.75em 0.75em 6em; padding:0; }
+.wrap { margin: 0 auto; position: relative; }
+
+
+/* ======================================================================
+05 :: HEADER ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+header { background: #fff; padding: 2em 1em 2.25em; text-align: center; }
+header li { display: inline-block; }
+header a { border:0; color:#aaa; display: block; font-size: 1.5em; height: 2em; line-height: 2; margin:0; overflow: hidden; padding:0; white-space: normal; width: 2em; }
+header a i, header a b { display: none }
+.li { color: #007bb6; }
+.dr { color: #ea4c89 }
+.tw { color: #00aced; font-size: 1.4em; margin-bottom: 0.05em }
+.da { color: #728641; font-size: 1.6em; padding-top: 0.1em; }
+.gh { color: #333333; font-size: 1.6em; }
+header a:hover { background: transparent; margin: 0; padding: 0; color:#888; }
+.tw:hover { margin-bottom: 0.05em }
+.da:hover { padding-top: 0.1em }
+#top:target h1 { -webkit-animation: highlight 4s; -moz-animation: highlight 4s }
+@-webkit-keyframes highlight {
+  0% { color: #333; }
+  30% { color: #F06900; }
+  100% { color: #333; }
+}
+@-moz-keyframes highlight {
+  0% { color: #333; }
+  30% { color: #F06900; }
+  100% { color: #333; }
+}
+
+/* ======================================================================
+06 :: CONTENT :::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+====================================================================== */
+.content { background: #fff; padding: 0 2em 1em }
+.meta { margin: 0 auto 2rem; max-width:20em; width:100%; }
+.meta li { display: block; margin-bottom: 0.5em; }
+a.btn { border:1px solid #ccc; border-radius: 0.5em; display: block; font-size: 1.1rem; line-height: 1; padding: 0.6em 0.75em 0.75em 3.2em; position:relative; text-shadow:0 1px 0 #fff; }
+a.btn:before { border-right:1px solid #d2d2d2; box-shadow: 1px 0 0 #fff; left:0; padding: 0.85em 0.7em 0.55em 0.5em; position: absolute; text-shadow:0 1px 0 #fff; top:0; }
+a.btn:hover { border-color:#ea3a00; color:#fff; margin: 0; text-shadow:none; }
+a.btn:hover:before { border-right: none; box-shadow: 1px 0 0 #ea3a00; text-shadow:none; }
+
+/* Intro */
+.intro { margin: 3em 0 4.5em; text-align: center; }
+.intro img { border-radius: 50%;  margin: 0 0 1em; width:200px; }
+.intro p { text-align: left; }
+
+/* About */
+.about section { margin-bottom: 4.5em }
+.about section:last-child { margin-bottom: 0 }
+
+.skillset li, .others li { font-size: 1.225em; list-style: circle outside; margin: 0 0 0.5em 1em }
+.experience h3 { height: 1.1em; }
+.experience h4 { font-size: 1rem }
+.role { display: block; }
+.timespan { display: block; font-size: 0.9em; margin: 0 0 0.35em }
+.print { display: none }
+
+/* ======================================================================
+07 :: FOOTER ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+========================================================================= */
+footer { background: #fff; bottom:0.75em; clear: both; color: #fff; height: 6em; left: 0.75em; padding: 2rem; position: absolute; right: 0.75em; text-align: center }
+.backtop { border: 0; font-size: 1.225em; font-weight: 300; line-height: 1; text-transform: uppercase; }
+.backtop:before { font-size: 1.25em }
+
+
+
+/* ======================================================================
+10 :: MEDIA QUERIES (default: mobile, 320px and up) :::::::::::::::::::::
+====================================================================== */
+
+/* 11a - 480 up */
+  @media screen and (min-width:480px) {
+    
+  }
+
+
+/* 600px and up */
+  @media screen and (min-width: 600px) {
+    .intro { overflow: hidden; text-align: left; display: table;}
+    .intro img { border-radius: 68%; margin: 0 2em 0 0; width: 100%; display: table-cell;}
+    .intro p { overflow: hidden; display: table-cell; width: 73%; vertical-align: middle; padding-left: 1.5em;}
+  }
+
+
+/* 900px and up */
+  @media screen and (min-width: 900px) {
+
+    html { background-color: #222; background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxwYXRoIGQ9Ik0tMiAxMEwxMCAtMlpNMTAgNkw2IDEwWk0tMiAyTDIgLTIiIHN0cm9rZT0iIzIyMiIgc3Ryb2tlLXdpZHRoPSI0LjUiPjwvcGF0aD4KPC9zdmc+"),url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPgo8bGluZWFyR3JhZGllbnQgaWQ9ImciIHgyPSIxIiB5Mj0iMSI+CjxzdG9wIHN0b3AtY29sb3I9IiNGMTkiPjwvc3RvcD4KPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMENGIj48L3N0b3A+CjwvbGluZWFyR3JhZGllbnQ+CjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjZykiPjwvcmVjdD4KPC9zdmc+"); }
+
+    header, footer, .wrap { max-width: 55.5rem; margin:0; }
+    header { padding: 2.25em 2.5em; position: relative; text-align: left }
+    header ul { position: absolute; right: 2em; top:1.5em; }
+    .content { padding: 0 2.75em 2em; }
+    footer { padding:2em 2.75em; text-align: right }
+
+    .lightgrey:hover { 
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top,  #ffffff 0%, #f2f2f2 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#ffffff), color-stop(100%,#f2f2f2)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(top,  #ffffff 0%,#f2f2f2 100%); /* IE10+ */
+    background: linear-gradient(to bottom,  #ffffff 0%,#f2f2f2 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 ); /* IE6-9 */
+    }
+    
+    .lightgrey:active { background: #F06900; box-shadow: none }
+
+    .meta { max-width: 100%; overflow: hidden; width:100%; }
+    .meta li { float: left; }
+    a.btn { border-radius: 0; border-right:0; padding: 0.7em 1.3em 0.75em }
+      li:last-child a.btn, .print a.btn:only-child { border-right: 1px solid #ccc; }
+    a.btn:before { border:0; box-shadow: none; left: auto; margin: 0 0.6em 0 0; padding: 0; position:static; top:auto; }
+    a.btn:hover { border-color:#ccc; color:#555; margin: 0; }
+    a.btn:hover:before { border: 0; box-shadow: none }
+    a.btn:active { border-color:#ea3a00; box-shadow: inset 0 0 0.25em rgba(0,0,0,.3); color:#fff; text-shadow:none; }
+    a.btn:active:before { text-shadow:none; }
+
+    .intro { font-size: 1.25em; margin: 1em 0 3.5em; }
+
+    .print { display: block; margin: 4em 0 2em; text-align: left; }
+    .print a, .print a:hover { display: inline-block; margin: 0; padding: 0.8em 1em 0.75em 1em; width: auto }
+
+  }
+
+  /* 900px and up */
+  @media print {
+
+    header, footer, .wrap { max-width: 55.5rem; margin:0; }
+    header { padding: 2.25em 2.5em; position: relative; text-align: left }
+    header ul { margin: 2em 0 0 }
+    header li { display: block }
+    header a { font-size: 1.25em !important; width:auto; }
+    header a b { display: inline-block; font-weight: 400; margin-left: 0.35em }
+    .content { padding: 0 2.75em 2em; }
+    footer { padding:2em 2.75em; text-align: right }
+
+    .meta { margin: 0 }
+    .meta li { margin-bottom: 1em }
+    a.btn { border: 0 !important; border-radius: 0; box-shadow: none; padding: 0 }
+    a.btn:before { border:0; box-shadow: none; left: auto; margin: 0 0.6em 0 0; padding: 0; position:static; top:auto; }
+
+    .intro { font-size: 1.25em; margin: 2.5em 0 3.5em; text-align: left }
+    .experience p { margin-bottom: 1.75em }
+
+    .print, .backtop { display: none }
+
+  }
