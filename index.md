@@ -10,6 +10,11 @@ This site is a work in progress.
 
 hello@luka.io
 
+
+### Resume
+
+My current resume can be found at [/resume](/resume)
+
 ### My old portfolio
 
 [designeus.hr](http://www.designeus.hr/)
