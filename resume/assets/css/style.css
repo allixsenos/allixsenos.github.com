@@ -246,7 +246,7 @@ footer { background: #fff; bottom:0.75em; clear: both; color: #fff; height: 6em;
     .intro { font-size: 1.25em; margin: 1em 0 3.5em; }
 
     .print { display: block; margin: 4em 0 2em; text-align: left; }
-    .print a, .print a:hover { display: inline-block; margin: 0; padding: 0.8em 1em 0.75em 1em; width: auto }
+    .print a, .print a:hover { display: inline-block; margin: 0; padding: 0.8em 1.1em 0.75em 1.1em; width: auto }
 
   }
 
