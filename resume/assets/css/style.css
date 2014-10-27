@@ -181,6 +181,7 @@ a.btn:hover:before { border-right: none; box-shadow: 1px 0 0 #ea3a00; text-shado
 .role { display: block; }
 .timespan { display: block; font-size: 0.9em; margin: 0 0 0.35em }
 .print { display: none }
+.printonly { display: block; }
 
 /* ======================================================================
 07 :: FOOTER ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
@@ -247,6 +248,7 @@ footer { background: #fff; bottom:0.75em; clear: both; color: #fff; height: 6em;
 
     .print { display: block; margin: 4em 0 2em; text-align: left; }
     .print a, .print a:hover { display: inline-block; margin: 0; padding: 0.8em 1.1em 0.75em 1.1em; width: auto }
+    .printonly { display: none; }
 
   }
 
@@ -271,6 +273,7 @@ footer { background: #fff; bottom:0.75em; clear: both; color: #fff; height: 6em;
     .experience p { margin-bottom: 1.75em }
 
     .print, .backtop { display: none }
+    .printonly { display: block; }
 
   }
 
