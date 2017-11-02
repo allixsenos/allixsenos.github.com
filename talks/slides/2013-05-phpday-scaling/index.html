@@ -1,0 +1,402 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>phpDay 2013 - LAMP Scaling 101 by Luka Kladaric</title>
+
+		<meta name="description" content="Scaling your LAMP app up from a single server">
+		<meta name="author" content="Luka Kladaric">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/solarized.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body data-clockNO="yes" data-countdown="45">
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section>
+					<h1>LAMP scaling 101</h1>
+					<h3>when a single server no longer cuts it</h3>
+					<h4>Luka Kladaric - phpDay 2013</h4>
+					<small>
+						<a href="http://twitter.com/kll">@kll</a>
+							<br>
+						<a href="mailto:hello@luka.io">hello@luka.io</a>
+							<br>
+						<a href="http://luka.io">http://luka.io</a>
+					</small>
+				</section>
+
+				<section>
+					<section>
+						<h1>who?</h1>
+					</section>
+
+					<section>
+						<h5>about Luka</h5>
+						<p>web tinkerer since before I was allowed<br>to stay out after dark</p>
+					</section>
+
+					<section>
+						<h5>about Luka</h5>
+						<p>10 years of PHP for a living</p>
+						<small>mostly freelancing</small>
+					</section>
+
+					<section>
+						<h5>about Luka</h5>
+						<p>putting the genie back in the bottle<br>at <a href="http://www.deviantart.com/">deviantART</a> since 2010.</p>
+						<small>(a 13-year-old, 30-million-user, 90 million pv/day digital artists community)</small>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>anatomy of a LAMP app</h2>
+					<ul>
+						<li>static requests (css/js/img)</li>
+						<li>app requests (php)</li>
+						<li>database</li>
+						<li>storage / user uploads</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h1>static requests</h1>
+						<h5>css, js, images and other assets</h5>
+					</section>
+
+					<section>
+						<h5>static requests</h5>
+						<h2>different needs, different setup</h2>
+						<p>you either have a very slow PHP setup,<br>or you're wasting a ton of resources on the static</p>
+					</section>
+
+					<section>
+						<h5>static requests</h5>
+						<h2>separate from app servers!</h2>
+					</section>
+
+					<section>
+						<h5>static requests</h5>
+						<h1>nginx</h1>
+					</section>
+
+					<section>
+						<h5>static requests</h5>
+						<h1>CDN</h1>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h1>moar juice</h1>
+						<h2>out of your php</h2>
+					</section>
+
+					<section>
+						<h5>moar juice out of your php</h5>
+						<h2>opcode cache</h2>
+					</section>
+
+					<section>
+						<h5>moar juice out of your php</h5>
+						<h2>static page caching</h2>
+						<p>for all your logged out traffic</p>
+					</section>
+
+					<section>
+						<h5>moar juice out of your php</h5>
+						<h2>memcached</h2>
+						<p>but make sure you have an off switch</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>multiple app servers</h1>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>no sessions</h2>
+						<p>yes, you could.<br>but no, you shouldn't.</p>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>no common local cache</h2>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>race conditions</h2>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>centralised configuration</h2>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>distributed cron</h2>
+						<p>atomic claim through db</p>
+					</section>
+
+					<section>
+						<h5>multiple app servers</h5>
+						<h2>async job queue</h2>
+						<p>gearman</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h1>databases</h1>
+					</section>
+
+					<section>
+						<h2>db replication</h2>
+					</section>
+
+					<section>
+						<h5>db replication</h5>
+						<h2>master/slave</h2>
+					</section>
+
+					<section>
+						<h5>db replication</h5>
+						<h2>performance gains</h2>
+						<small>scaling reads only,<br>writes happen on every slave</small>
+					</section>
+
+					<section>
+						<h5>db replication</h5>
+						<h2>replication lag</h2>
+						<small>the truth is flexible</small>
+					</section>
+
+					<section>
+						<h5>db replication</h5>
+						<h2>update + select</h2>
+	                    <pre><code data-trim contenteditable>
+-- atomic increment &amp; return
+UPDATE users SET login_count = LAST_INSERT_ID(login_count + 1);
+	                    </code></pre>
+	                    <pre><code data-trim contenteditable>
+$new_login_count = $db->last_insert_id(); // magic
+	                    </code></pre>
+	                    <small><a href="http://dev.mysql.com/doc/refman/5.0/en/information-functions.html#function_last-insert-id">http://dev.mysql.com/doc/refman/5.0/en/information-functions.html#function_last-insert-id</a></small>
+					</section>
+
+
+
+					<section>
+						<h2>db pooling</h2>
+						<small>as in: a pool of servers.</small>
+					</section>
+
+					<section>
+						<h5>db pooling</h5>
+						<h2>isolation of concerns</h2>
+						<small>achieving consistent performance is often times<br>more important than achieving speed</small>
+					</section>
+
+					<section>
+						<h5>db pooling</h5>
+						<h2>isolation of pain points</h2>
+						<small>maintaining performance/availability on critical sections</small>
+					</section>
+
+					<section>
+						<h5>db pooling</h5>
+						<h2>higher cache hit rate</h2>
+					</section>
+
+
+					<section>
+						<h2>db clusters</h2>
+						<p>separating different types of content to completely<br>unrelated clusters of replicated databases</p>
+					</section>
+
+
+					<section>
+						<h2>db partitioning</h2>
+						<small>the art of making your data horribly difficult to track</small>
+					</section>
+
+					<section>
+						<h5>db partitioning</h5>
+						<h2>vertical (row splitting)</h2>
+						<p>splitting lesser-used fields into extra tables</p>
+					</section>
+
+					<section>
+						<h5>db partitioning</h5>
+						<h2>horizontal (sharding)</h2>
+						<p>splitting data by a column</p>
+						<ul>
+							<li>over-shard in advance</li>
+							<li>forget about joins</li>
+						</ul>
+					</section>
+
+					<section>
+						<h2>db wenching</h2>
+						<p>satisfying as many consumers of the same source<br>of data with a single db request</p>
+						<small><a href="http://dt.deviantart.com/journal/Mixing-DOM-and-PHP-objects-for-fun-amp-profit-221131066">dT blog: mixing DOM and PHP objects for fun &amp; profit</a></small>
+					</section>
+
+				</section>
+
+				<section>
+					<section>
+						<h1>storage</h1>
+					</section>
+
+					<section>
+						<h5>storage</h5>
+						<h2>S3 or DIY</h2>
+						<small>cool bonus feature: timebombed links</small>
+					</section>
+
+					<section>
+						<h5>storage</h5>
+						<h2>CDN</h2>
+					</section>
+
+					<section>
+						<h5>storage</h5>
+						<h2>no longer "local" data</h2>
+					</section>
+				</section>
+
+				<section>
+					<h1>premature optimization</h1>
+					<h3>don't do it.</h3>
+					<p>srsly.</p>
+				</section>
+
+				<section>
+					<section>
+						<h1>review</h1>
+					</section>
+
+					<section>
+						<h5>review</h5>
+						<h2>static</h2>
+						<p>offload &amp; forget</p>
+					</section>
+
+					<section>
+						<h5>review</h5>
+						<h2>php</h2>
+						<ul>
+							<li>multi-server</li>
+							<li>shared-nothing</li>
+							<li>no local state</li>
+						</ul>
+					</section>
+
+					<section>
+						<h5>review</h5>
+						<h2>database</h2>
+						<ul>
+							<li>partitioning</li>
+							<li>pooling</li>
+							<li>sharding</li>
+							<li>no joins</li>
+						</ul>
+					</section>
+
+					<section>
+						<h5>review</h5>
+						<h2>storage</h2>
+						<p>offload &amp; forget</p>
+					</section>
+				</section>
+
+				<section>
+					<h1>questions? :)</h1>
+				</section>
+
+				<section>
+					<h1>THANK YOU</h1>
+					<p>
+						<a href="http://twitter.com/kll">@kll</a>
+							<br>
+						<a href="mailto:hello@luka.io">hello@luka.io</a>
+							<br>
+						<a href="http://luka.io">http://luka.io</a>
+					</p>
+					<small>
+						<br>
+						please rate &amp; comment<br>
+						<a href="https://joind.in/8649">https://joind.in/8649</a>
+					</small>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: 'solarized', //Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } },
+					// { src: 'plugin/search/search.js', async: true, condition: function() { return !!document.body.classList; } }
+					// { src: 'plugin/remotes/remotes.js', async: true, condition: function() { return !!document.body.classList; } }
+					{ src: 'plugin/clock/clock.js', async: true, condition: function() { return !!document.querySelector('body[data-clock]'); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
