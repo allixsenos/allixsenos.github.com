@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Luka Kladarić</title>
+<meta name="description" content="Things Luka Kladarić built for fun: Croatian event and cinema trackers, calendars, and a few command-line tools.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23151513'/%3E%3Ctext x='16' y='23' font-family='ui-monospace,monospace' font-size='20' fill='%23e2b04a' text-anchor='middle'%3Ek%3C/text%3E%3C/svg%3E">
+<style>
+:root {
+  --bg: #faf9f7;
+  --fg: #1c1b19;
+  --muted: #6b6862;
+  --rule: #e0ddd6;
+  --accent: #9a6b12;
+  --tag-bg: #efece5;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #131312;
+    --fg: #e6e3dd;
+    --muted: #918d85;
+    --rule: #2b2a27;
+    --accent: #e2b04a;
+    --tag-bg: #232220;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 16px/1.6 var(--sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.page {
+  max-width: 54rem;
+  margin: 0 auto;
+  padding: 5rem 1.5rem 6rem;
+}
+
+/* ---- masthead ---- */
+
+h1 {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  margin: 0.75rem 0 0;
+  max-width: 34rem;
+  color: var(--muted);
+}
+
+.masthead {
+  padding-bottom: 3rem;
+  border-bottom: 1px solid var(--rule);
+}
+
+/* ---- sections ---- */
+
+section { margin-top: 3.5rem; }
+
+h2 {
+  margin: 0 0 0.25rem;
+  font: 500 0.75rem/1 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.section-note {
+  margin: 0 0 1.75rem;
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+/* ---- the index ---- */
+
+.index {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.entry {
+  display: grid;
+  grid-template-columns: 13rem minmax(0, 1fr);
+  gap: 0 2rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--rule);
+}
+
+.entry:first-child { border-top: 0; padding-top: 0; }
+
+.entry-name {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.entry-name a { color: inherit; }
+
+.tag {
+  display: inline-block;
+  margin-top: 0.4rem;
+  padding: 0.1rem 0.45rem;
+  border-radius: 3px;
+  background: var(--tag-bg);
+  color: var(--muted);
+  font: 400 0.7rem/1.6 var(--mono);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.entry p {
+  margin: 0;
+  max-width: 38rem;
+}
+
+code {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  color: var(--muted);
+}
+
+.entry .links {
+  margin-top: 0.6rem;
+  font-family: var(--mono);
+  font-size: 0.8rem;
+}
+
+.entry .links a { margin-right: 1rem; white-space: nowrap; }
+
+/* ---- links ---- */
+
+a {
+  color: var(--accent);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.15em;
+}
+
+a:hover { text-decoration-thickness: 2px; }
+
+.entry-name a { text-decoration-color: var(--rule); }
+.entry-name a:hover { text-decoration-color: currentColor; }
+
+/* ---- footer ---- */
+
+footer {
+  margin-top: 4rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--rule);
+  font-size: 0.875rem;
+  color: var(--muted);
+}
+
+footer a { margin-right: 1.25rem; }
+
+/* ---- narrow ---- */
+
+@media (max-width: 40rem) {
+  .page { padding-top: 3rem; }
+  .entry {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+  .tag { margin-top: 0; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <header class="masthead">
+    <h1>Luka Kladarić</h1>
+    <p class="lede">
+      Software engineer in Zagreb. Below is the stuff I build outside work —
+      mostly small services that watch something in Croatia and publish what
+      changed, plus a few command-line tools.
+    </p>
+  </header>
+
+  <main>
+
+    <section>
+      <h2>Running</h2>
+      <p class="section-note">Public, maintained, updates itself on a schedule.</p>
+
+      <ol class="index">
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://standup.hr">standup.hr</a></h3>
+            <span class="tag">website</span>
+          </div>
+          <div>
+            <p>
+              Every Croatian stand-up show, by city and venue, with dates and
+              times. No accounts, no ticket-shop noise. The whole catalogue is
+              also a calendar you can subscribe to and a schema.org feed, so
+              other things can read it.
+            </p>
+            <p class="links">
+              <a href="https://standup.hr">standup.hr</a>
+              <a href="https://standup.hr/standup.ics">calendar feed</a>
+              <a href="https://standup.hr/events.jsonld">json-ld</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://moviesoon.eu">moviesoon.eu</a></h3>
+            <span class="tag">website · telegram</span>
+          </div>
+          <div>
+            <p>
+              Watches the Croatian cinema chains for what is coming out and,
+              more usefully, for release dates quietly moving. Announces new
+              titles, date changes and trailers, and publishes the upcoming
+              slate as a page, an RSS feed and a calendar.
+            </p>
+            <p class="links">
+              <a href="https://moviesoon.eu">moviesoon.eu</a>
+              <a href="https://moviesoon.eu/hr/feed.xml">rss</a>
+              <a href="https://moviesoon.eu/hr/releases.ics">calendar feed</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://allixsenos.github.io/kazalisni-radar/">Kazališni radar</a></h3>
+            <span class="tag">website</span>
+          </div>
+          <div>
+            <p>
+              The Croatian theatre programme in one place — city, theatre,
+              show, performance dates and premieres — refreshed every morning.
+            </p>
+            <p class="links">
+              <a href="https://allixsenos.github.io/kazalisni-radar/">kazališni radar</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://allixsenos.github.io/korisni-kalendari/">Korisni kalendari</a></h3>
+            <span class="tag">calendars</span>
+          </div>
+          <div>
+            <p>
+              The Croatian school year, public holidays, and the commemorative
+              days and customs nobody can ever remember — as calendars you
+              subscribe to once instead of looking them up every year. Croatian
+              and English, and they work in Google, Apple and Outlook.
+            </p>
+            <p class="links">
+              <a href="https://allixsenos.github.io/korisni-kalendari/">korisni kalendari</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name">Nespresso HR watcher</h3>
+            <span class="tag">telegram</span>
+          </div>
+          <div>
+            <p>
+              Reads the Croatian Nespresso catalogue once a day and sends one
+              message when something actually changed: a new capsule, a price
+              cut, a machine on sale, or a coffee flagged last-chance before it
+              leaves the range for good.
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://t.me/ClaudeCodeReleases">Claude Code releases</a></h3>
+            <span class="tag">telegram</span>
+          </div>
+          <div>
+            <p>
+              Claude Code ships several times a day and the changelog is a wall
+              of bullets. This turns each release into one readable post in a
+              Telegram channel, within the hour.
+            </p>
+            <p class="links">
+              <a href="https://t.me/ClaudeCodeReleases">@ClaudeCodeReleases</a>
+            </p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+    <section>
+      <h2>Tools</h2>
+      <p class="section-note">Things you install.</p>
+
+      <ol class="index">
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://github.com/awesome-foundation/cfntop">cfntop</a></h3>
+            <span class="tag">go · tui</span>
+          </div>
+          <div>
+            <p>
+              <code>top</code> for AWS CloudFormation. Live view of every stack
+              in a region, deployments in progress on top and expanded, ECS
+              services showing task counts and why the failed ones failed.
+              For watching a deploy without refreshing the console.
+            </p>
+            <p class="links">
+              <a href="https://github.com/awesome-foundation/cfntop">source</a>
+              <a href="https://github.com/awesome-foundation/cfntop/releases">releases</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://github.com/awesome-foundation/cfnpeek">cfnpeek</a></h3>
+            <span class="tag">go · cli</span>
+          </div>
+          <div>
+            <p>
+              The read-only half of the same problem: dump a deployed stack's
+              resources, outputs, exports and events in whatever format the
+              next command in the pipe wants. Cannot change anything.
+            </p>
+            <p class="links">
+              <a href="https://github.com/awesome-foundation/cfnpeek">source</a>
+              <a href="https://github.com/awesome-foundation/cfnpeek/releases">releases</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://github.com/allixsenos/claude-plugins">Claude Code plugins</a></h3>
+            <span class="tag">plugins · skills</span>
+          </div>
+          <div>
+            <p>
+              A handful of plugins for Claude Code. The one worth having is
+              <strong>git-governor</strong>, which blocks the commands you
+              never meant to run — amends, force pushes, <code>reset --hard</code>,
+              commits straight onto <code>main</code> — before they happen
+              rather than after.
+            </p>
+            <p class="links">
+              <a href="https://github.com/allixsenos/claude-plugins">source</a>
+            </p>
+          </div>
+        </li>
+
+        <li class="entry">
+          <div>
+            <h3 class="entry-name"><a href="https://passwds.ninja">passwds.ninja</a></h3>
+            <span class="tag">website · extension</span>
+          </div>
+          <div>
+            <p>
+              Passwords you can read down the phone to someone. Generated in
+              your browser and never sent anywhere. There is a Chrome extension
+              too, for when the password field is right there.
+            </p>
+            <p class="links">
+              <a href="https://passwds.ninja">passwds.ninja</a>
+              <a href="https://github.com/allixsenos/passwds-ninja-web">source</a>
+            </p>
+          </div>
+        </li>
+
+      </ol>
+    </section>
+
+  </main>
+
+  <footer>
+    <a href="https://github.com/allixsenos">GitHub</a>
+    <a href="https://www.linkedin.com/in/lukakladaric">LinkedIn</a>
+  </footer>
+
+</div>
+</body>
+</html>
